@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="center" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ControllerFX">
+    <ProgressBar fx:id="operationProgress" managed="false" maxWidth="Infinity" visible="false" />
+    <HBox fx:id="authPanel">
+        <TextField id="usernameField" fx:id="usernameField" promptText="Логин" text="sb16" HBox.hgrow="ALWAYS" />
+        <PasswordField id="passwordField" fx:id="passwordField" promptText="Пароль" text="123456" HBox.hgrow="ALWAYS" />
+        <Button onAction="#login" text="Авторизоваться" HBox.hgrow="ALWAYS" />
+    </HBox>
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" text="Локальное хранилище" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+            <ListView fx:id="localList" editable="true" VBox.vgrow="ALWAYS" />
+            <HBox fx:id="actionPanel1" managed="false" visible="false">
+                <Button maxWidth="Infinity" onAction="#uploadFileOrFolder" text="Отправить файл/папку" HBox.hgrow="ALWAYS" />
+                <Button maxWidth="Infinity" onAction="#deleteLocalFile" text="Удалить файл" HBox.hgrow="ALWAYS" />
+                <Button maxWidth="Infinity" onAction="#updateLocalFilesList" text="Обновить" HBox.hgrow="ALWAYS" />
+            </HBox>
+        </VBox>
+        <VBox HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" contentDisplay="CENTER" maxWidth="Infinity" text="Облачное хранилище" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+            <ListView fx:id="cloudList" VBox.vgrow="ALWAYS" />
+            <HBox fx:id="actionPanel2" managed="false" visible="false">
+                <Button maxWidth="Infinity" onAction="#downloadFile" text="Скачать файл" HBox.hgrow="ALWAYS" />
+                <Button maxWidth="Infinity" onAction="#deleteCloudFsObj" text="Удалить файл" HBox.hgrow="ALWAYS" />
+                <Button maxWidth="Infinity" onAction="#refreshFolderList" text="Обновить" HBox.hgrow="ALWAYS" />
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
